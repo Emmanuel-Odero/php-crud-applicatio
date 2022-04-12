@@ -11,7 +11,17 @@
 <title>PHP Crud Application</title>
 </head>
 <body>
-    <?php require_once 'process.php';?>
+    <?php require_once 'process.php'; ?>
+    <?php
+    if (isset($_SESSION['message'])):?>
+        <div class="alert alert-<?$_SESSION['msg_type']?>">
+        <?php
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+        ?>
+        </div>
+        <?php endif ?>
+
     <div class="container">
     <?php
     $mysqli= new mysqli('localhost','root','','crud') or die(mysqli_error($mysqli));
@@ -34,8 +44,10 @@
                 <td><?php echo $row['name'] ?></td>
                 <td><?php echo $row['location'] ?></td>
                 <td>
-                    <a href="index.php?edit=<?php echo $row['id'];?>" class="btn btn-info">Edit</a>
-                    <a href="process.php?delete=<?php echo $row['id'] ?>" class="btn btn-danger">Delete</a>
+                    <a href="index.php?edit=<?php echo $row['id'];?>" 
+                    class="btn btn-info">Edit</a>
+                    <a href="process.php?delete=<?php echo $row['id'] ?>" 
+                    class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             <?php endwhile; ?>
@@ -52,14 +64,20 @@
         <form action="" method="post">
             <div class="form-group">
                 <label >Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Entre you name">
+                <input type="text" required name="name" value="<?php echo $name; ?>" class="form-control" placeholder="Entre you name">
             </div>
             <div class="form-group">
                 <label >Location</label>
-                <input type="text" name="location" class="form-control" placeholder="Entre your location">
+                <input type="text" required name="location" value="<?php echo $location; ?>" class="form-control" placeholder="Entre your location">
             </div>
             <div class="form-group">
+                <?php
+                if($update ==true):
+                ?>
+                <button type="submit" class="btn btn-info" name="update">Update</button>
+                <?php else: ?>
                 <button type="submit" class="btn btn-primary" name="save">Save</button>
+                <?php endif; ?>
             </div>
         </form>
     </div>
