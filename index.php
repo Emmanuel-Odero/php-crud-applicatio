@@ -12,18 +12,21 @@
 </head>
 <body>
     <?php require_once 'process.php';?>
+    <?php
+    $mysqli= new mysqli('localhost','root','','crud') or die(mysqli_error($mysqli));
+    ?>
     <div class ="row justify-content-center">
     <form action="" method="post">
         <div class="form-group">
             <label >Name</label>
-            <input type="text" name="name" class="form-control" value="Entre you name">
+            <input type="text" name="name" class="form-control" placeholder="Entre you name">
         </div>
         <div class="form-group">
             <label >Location</label>
-            <input type="text" name="location" class="form-control" value="Entre your location">
+            <input type="text" name="location" class="form-control" placeholder="Entre your location">
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" name="save" value="Save">
+            <button type="submit" class="btn btn-primary" name="save">Save</button>
         </div>
     </form>
     </div>
