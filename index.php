@@ -14,11 +14,11 @@
     <?php require_once 'process.php'; ?>
     <?php
     if (isset($_SESSION['message'])):?>
-        <div class="alert alert-<?$_SESSION['msg_type']?>">
-        <?php
-        echo $_SESSION['message'];
-        unset($_SESSION['message']);
-        ?>
+        <div class="alert alert-<?=$_SESSION['msg_type']?>">
+            <?php
+            echo $_SESSION['message'];
+            unset ($_SESSION['message']);
+            ?>
         </div>
         <?php endif ?>
 
@@ -77,6 +77,7 @@
                 <button type="submit" class="btn btn-info" name="update">Update</button>
                 <?php else: ?>
                 <button type="submit" class="btn btn-primary" name="save">Save</button>
+                <!-- <button type="submit" class="btn btn-primary" name="save">Save</button> -->
                 <?php endif; ?>
             </div>
         </form>
