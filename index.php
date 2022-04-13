@@ -68,8 +68,10 @@
             </div>
             <div class="form-group">
                 <label >Location</label>
-                <input type="text" required name="location" value="<?php echo $location; ?>" class="form-control" placeholder="Entre your location">
+                <input type="text" required name="location" 
+                value="<?php echo $location; ?>" class="form-control" placeholder="Entre your location">
             </div>
+            <br>
             <div class="form-group">
                 <?php
                 if($update ==true):
