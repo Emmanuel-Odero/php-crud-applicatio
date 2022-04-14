@@ -62,6 +62,7 @@
     ?>
     <div class ="container row justify-content-center">
         <form action="" method="post">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="form-group">
                 <label >Name</label>
                 <input type="text" required name="name" value="<?php echo $name; ?>" class="form-control" placeholder="Entre you name">

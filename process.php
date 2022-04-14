@@ -1,7 +1,7 @@
 <?php
 session_start();
 $mysqli= new mysqli('localhost','root','','crud') or die(mysqli_error($mysqli));
-
+$id =0;
 $update =false;
 
 $name ='';
@@ -31,5 +31,14 @@ if (isset($_GET['edit'])) {
         $name = $row['name'];
         $location =$row['location'];
     }
+}
+if (isset($_POST['update'])){
+    $id = $_POST['id'];
+    $id = $_POST['name'];
+    $id = $_POST['location'];
+    $mysqli->query("UPDATE data SET name='$name', name='$name' WHERE id='$id'")or die($mysqli->error());
+    $_SESSION['message'] = "Record has been Updated";
+    $_SESSION['msg_type'] = "warning";
+    header("location: index.php");
 }
 ?>
